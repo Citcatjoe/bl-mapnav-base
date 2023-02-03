@@ -32,29 +32,64 @@ body {
     min-height: 100vh;
     min-height: fill-available;
     min-height: -webkit-fill-available;
+    overflow:hidden;
+    
 }
 html {
     height: fill-available;
     height: -webkit-fill-available;
 }
 
-.swiper
+.swiper0
 {
-    height: 100vh;
+    // height: 100vh;
     min-height: fill-available;
     min-height: -webkit-fill-available;
 }
 
-// .text-container
-// {
-//     height: 100vh;
-//     min-height: fill-available;
-//     min-height: -webkit-fill-available;
-// }
+.swiper0 
+{
+    overflow: hidden;
 
-// .lol
-// {
-//     opacity: .5;
-// }
+    .swiper-wrapper {overflow:hidden;}
+
+    .swiper-slide
+    {
+        overflow-y:scroll;
+
+        &.is-hidden
+        {
+            opacity: 0 !important;
+            transition: opacity .5s;
+        }
+    }
+}
+
+.swiper1
+{
+    // height: 100vh;
+    min-height: auto;
+
+    @include breakpoint(min, medium) {
+        min-height: fill-available;
+        min-height: -webkit-fill-available;
+    }; 
+}
+
+.aspect-video {
+    aspect-ratio: 14 / 9 !important;
+}
 
 
+::-webkit-scrollbar
+{
+  width: 5px;
+  background-color: #transparent;
+}
+
+::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,.3);
+  background-color: #555;
+}

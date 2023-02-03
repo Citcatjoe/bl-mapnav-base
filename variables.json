@@ -14,5 +14,5 @@
 		"logo": "img/empty.png",
 		"link": "https://www.blick.ch/"
 	},
-	"debugSlider": false
+	"debugSlider": true
 }

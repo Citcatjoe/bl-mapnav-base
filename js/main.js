@@ -19,6 +19,12 @@
     //     var html = template({'card':data});
     //     $(".authors").prepend(html); 
     // }
+
+    var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: 111}});
+    var scene;
+    var scene2;
+    var array = [];
+
     setTimeout(function() { 
         $('body').addClass('is-visible');
     }, 1000);
@@ -27,89 +33,152 @@
         $('.scroller').addClass('is-visible');
     }, 6000);
     
-    const swiper = new Swiper('.swiper', {
-        // Optional parameters
+    const swiper0 = new Swiper('.swiper0', {
+        direction: 'vertical',
+        loop: false,
+        effect: "fade",
+        speed: 200,
+        allowTouchMove: false,
+        navigation: {
+          nextEl: '.apres0',
+          prevEl: '.avant0',
+        }
+    })
+    .on('activeIndexChange', function () {
+            destroyScene();
+            setTimeout(function() { 
+                setScene();
+            }, 2000);
+    });
+
+    const swiper1 = new Swiper('.swiper1', {
         direction: 'vertical',
         loop: true,
         effect: "fade",
         speed: 200,
-      
-        // If we need pagination
-        // pagination: {
-        //   el: '.swiper-pagination',
-        // },
-      
-        // Navigation arrows
         navigation: {
-          nextEl: '.apres',
-          prevEl: '.avant',
-        },
-      
-        // And if we need scrollbar
-        // scrollbar: {
-        //   el: '.swiper-scrollbar',
-        // },
-    });
-
-   
+          nextEl: '.apres1',
+          prevEl: '.avant1',
+        }
+    }); 
 
     
-    var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: '100%'}});
 
-    new ScrollMagic.Scene({triggerElement: ".trigger0"})
-    .on("enter", function (event) {
-            var i = parseInt($('.trigger0').parent().attr('id').slice(-1));
-            swiper.slideTo(i+1);
-            $('.scroller').removeClass('is-visible');
-    }).triggerHook(0.8).addIndicators().addTo(controller);
-
-    new ScrollMagic.Scene({triggerElement: ".trigger1"})
-    .on("enter", function (event) {
-            var i = parseInt($('.trigger1').parent().attr('id').slice(-1));
-            swiper.slideTo(i+1);
-            $('.scroller').removeClass('is-visible');
-    }).triggerHook(0.8).addIndicators().addTo(controller);
-
-    new ScrollMagic.Scene({triggerElement: ".trigger2"})
-    .on("enter", function (event) {
-        var i = parseInt($('.trigger2').parent().attr('id').slice(-1));
-        swiper.slideTo(i+1);
-    }).triggerHook(0.8).addIndicators().addTo(controller);
-
-    new ScrollMagic.Scene({triggerElement: ".trigger3"})
-    .on("enter", function (event) {
-        var i = parseInt($('.trigger3').parent().attr('id').slice(-1));
-        swiper.slideTo(i+1);
-    }).triggerHook(0.8).addIndicators().addTo(controller);
-
-    new ScrollMagic.Scene({triggerElement: ".trigger4"})
-    .on("enter", function (event) {
-        var i = parseInt($('.trigger4').parent().attr('id').slice(-1));
-        swiper.slideTo(i+1);
-    }).triggerHook(0.8).addIndicators().addTo(controller);
+    function setScene(){
+        switch (swiper0.activeIndex) { 
+            case 0: 
+                console.log('Loop of creation comes...');
+                $( ".swiper-slide-active *[data-sm]").each(function( index ) {
+                    var dataSm = $(this).attr('data-sm');
+                    
+                    //window[dataSm]();
+                    
+                    array[index] = new ScrollMagic.Scene({triggerElement: this})
+                    .on("enter", function (event) {
+                        eval(dataSm + "()");
+                        //alert('EVENT SLIDE '+swiper0.activeIndex+' '+dataSm);
+                    }).triggerHook(0.8).addIndicators().addTo(controller);
+                });
+                
+                // array[0] = new ScrollMagic.Scene({triggerElement: ".s0t1"})
+                // .on("enter", function (event) {
+                //     alert('EVENT SLIDE 0');
+                // }).triggerHook(0.8).addIndicators().addTo(controller);
+                // array[1] = new ScrollMagic.Scene({triggerElement: ".s0t2"})
+                // .on("enter", function (event) {
+                //     alert('EVENT SLIDE 0');
+                // }).triggerHook(0.8).addIndicators().addTo(controller);
+                break;
+            case 1: 
+                console.log('Loop of creation comes...');
+                $( ".swiper-slide-active *[data-sm]").each(function( index ) {
+                    var dataSm = $(this).attr('data-sm');
+                    
+                    //window[dataSm]();
+                    
+                    array[index] = new ScrollMagic.Scene({triggerElement: this})
+                    .on("enter", function (event) {
+                        eval(dataSm + "()");
+                        //alert('EVENT SLIDE '+swiper0.activeIndex+' '+dataSm);
+                    }).triggerHook(0.8).addIndicators().addTo(controller);
+                });
+                // console.log('Loading slide 1 scene');
+                // array[0] = new ScrollMagic.Scene({triggerElement: ".s1t1"})
+                // .on("enter", function (event) {
+                //     alert('EVENT SLIDE 1');
+                // }).triggerHook(0.8).addIndicators().addTo(controller);
+                // array[1] = new ScrollMagic.Scene({triggerElement: ".s1t1"})
+                // .on("enter", function (event) {
+                //     alert('EVENT SLIDE 1');
+                // }).triggerHook(0.8).addIndicators().addTo(controller);
+                break;
+            case 2: 
+                console.log('Loop of creation comes...');
+                $( ".swiper-slide-active *[data-sm]").each(function( index ) {
+                    var dataSm = $(this).attr('data-sm');
+                    
+                    //window[dataSm]();
+                    
+                    array[index] = new ScrollMagic.Scene({triggerElement: this})
+                    .on("enter", function (event) {
+                        eval(dataSm + "()");
+                        //alert('EVENT SLIDE '+swiper0.activeIndex+' '+dataSm);
+                    }).triggerHook(0.8).addIndicators().addTo(controller);
+                });
+                // console.log('Loading slide 2 scene');
+                // array[0] = new ScrollMagic.Scene({triggerElement: ".s2t1"})
+                // .on("enter", function (event) {
+                //     alert('EVENT SLIDE 2');
+                // }).triggerHook(0.8).addIndicators().addTo(controller);
+                // array[1] = new ScrollMagic.Scene({triggerElement: ".s2t1"})
+                // .on("enter", function (event) {
+                //     alert('EVENT SLIDE 2');
+                // }).triggerHook(0.8).addIndicators().addTo(controller);
+                break;
+        }
     
-    new ScrollMagic.Scene({triggerElement: ".trigger5"})
-    .on("enter", function (event) {
-        var i = parseInt($('.trigger5').parent().attr('id').slice(-1));
-        swiper.slideTo(i+1);
-    }).triggerHook(0.8).addIndicators().addTo(controller);
+    }   
+    //setScene();
 
-    new ScrollMagic.Scene({triggerElement: ".trigger6"})
-    .on("enter", function (event) {
-        var i = parseInt($('.trigger6').parent().attr('id').slice(-1));
-        swiper.slideTo(i+1);
-    }).triggerHook(0.8).addIndicators().addTo(controller);
+    function destroyScene(){
+        console.log('Loop of destruction comes...')
+        for (var i=0; i<array.length; i++) {
+            array[i].destroy(true);
+            array[i] = null;
+        }
         
-    function previousImage(){
         
-        var i = parseInt($('.trigger:in-viewport').parent().attr('id').slice(-1));
-        console.log(i);
-        swiper.slideTo(i);
+
+        setTimeout(function() { 
+            console.log('Go up now');
+            $('.swiper0 .swiper-slide').scrollTop(0);
+        }, 1000);
+        
     }
-    function nextImage(){
-        var i = parseInt($('.trigger:in-viewport').parent().attr('id').slice(-1))+1;
-        console.log(i);
-        swiper.slideTo(i);
+
+    // STORYTELLING FUNCTIONS
+    function actionA(){
+        alert('CODE FONCTION A');
+    }
+
+    function actionB(){
+        alert('CODE FONCTION B');
+    }
+
+    function actionC(){
+        alert('CODE FONCTION C');
+    }
+
+    function actionD(){
+        alert('CODE FONCTION D');
+    }
+
+    function actionE(){
+        alert('CODE FONCTION E');
+    }
+
+    function actionF(){
+        alert('CODE FONCTION F');
     }
 
 })(jQuery);
